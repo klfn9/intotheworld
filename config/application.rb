@@ -18,7 +18,5 @@ module Intotheworld
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
-
-    config.hosts << "49af1136d6984ec48134fcf2919a0c01.vfs.cloud9.ap-northeast-1.amazonaws.com"
   end
 end
