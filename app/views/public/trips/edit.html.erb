@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="row ml-5 mt-2">
+    <div class="col ml-4">
+      <h2>編集ページ</h2>
+    </div>
+  </div>
+  <div class="row ml-5">
+    <!--編集フォーム-->
+    <%= form_with model: @trip, url: trip_path(@trip.id), method: :patch do |f| %>
+  <div class="col ml-5 mt-2 mb-3">
+      <%= image_tag @trip.image, size: "500x300" %>
+  </div>
+  </div>
+    <div class="row ml-5">
+      <div class="col ml-5 mt-3">
+        <h5>タイトル</h5>
+          <%= f.text_field :title %>
+      </div>
+    </div>
+      <div class="row ml-5">
+        <div class="col ml-5 my-4">
+          <h5>本文</h5>
+            <%= f.text_area :body, size: "62x5" %>
+            <%= f.submit '保存', class: "btn btn-outline-secondary" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
