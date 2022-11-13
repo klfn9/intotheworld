@@ -1,0 +1,19 @@
+<div class="container text-center mt-5">
+  <h3><strong>本当に退会しますか？</strong></h3>
+  <p class="my-3">
+   退会手続きをされますと、投稿サービスがご利用いただけなくなります。<br>
+   再度ご利用をいただく場合には、新規登録のお手続きが必要になります。<br>
+   本当に退会してよろしいですか？
+  </p>
+  <div class="row">
+      <div class="col-4">
+        </div>
+      <div class="col-2">
+        <%= link_to "退会しない", user_path(current_user), class: "btn btn-outline-primary btn-block" %>
+      </div>
+      <div class="col-2">
+        <%= link_to "退会する", withdraw_path ,method: :patch, data: { confirm: "本当に退会しますか？" }, class: "btn btn-outline-danger btn-block" %>
+      </div>
+    </div>
+
+</div>
