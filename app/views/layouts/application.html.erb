@@ -12,24 +12,36 @@
 
   <body>
     <header>
+      <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
     <% if user_signed_in? %>
-      <li>
-        <%= link_to '投稿フォーム', new_trip_path %>
+    <ul class="navbar-nav ml-auto" style="list-style: none;">
+      <li class="mx-3 my-5">
+        <%= link_to '投稿フォーム', new_trip_path, class: "btn btn-outline-info" %>
       </li>
-      <li>
-      <%= link_to 'マイページ', user_path(current_user.id) %>
+      <li class="mx-3 my-5">
+      <%= link_to 'マイページ', user_path(current_user.id), class: "btn btn-outline-info" %>
       </li>
-      <li>
-        <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+      <li class="mx-3 my-5">
+        <%= link_to '投稿一覧', trips_path, class: "btn btn-outline-info" %>
+      </li>
+      <li class="mx-3 my-5">
+        <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn btn-outline-info" %>
       </li>
     <% else %>
-      <li>
-        <%= link_to "新規登録", new_user_registration_path %>
+      <li class="mx-3 my-5">
+        <%= link_to "新規登録", new_user_registration_path, class: "btn btn-outline-info" %>
       </li>
-      <li>
-        <%= link_to "ログイン", new_user_session_path %>
+      <li class="mx-3 my-5">
+        <%= link_to "ログイン", new_user_session_path, class: "btn btn-outline-info" %>
       </li>
+      <li class="mx-3 my-5">
+        <%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post, class: "btn btn-outline-info" %>
+      </li>
+    </ul>
     <% end %>
+    </div>
+    </nav>
     </header>
     <%= yield %>
   </body>

@@ -17,11 +17,13 @@ class Public::TripsController < ApplicationController
   # すべてのデータを表示
   def index
     @trips = Trip.all
+    @trips = params[:tag_id].present? ? Tag.find(params[:tag_id]).trips : Trip.all
   end
 
   # 一つずつ取り出す
   def show
     @trip = Trip.find(params[:id])
+    @trip_comment = TripComment.new
   end
 
   # 投稿編集
@@ -36,7 +38,7 @@ class Public::TripsController < ApplicationController
     #詳細ページへ遷移
     redirect_to trip_path(trip.id)
   end
-  
+
   # 削除機能
   def destroy
     trip = Trip.find(params[:id])
@@ -45,11 +47,18 @@ class Public::TripsController < ApplicationController
     redirect_to trip_path
   end
 
+  def search
+    @trips = Trip.search(params[:keyword])
+    @keyword = params[:keyword]
+  render "index"
+  end
+
 
   # 投稿データのストロングパラメータ
   private
 
   def trip_params
-    params.require(:trip).permit(:title, :image, :body)
+    params.require(:trip).permit(:title, :image, :body, :star)
+    # params.require(:trip).permit(:title, :image, :body, :star, tag_ids: [])
   end
 end
