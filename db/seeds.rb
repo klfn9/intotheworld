@@ -12,5 +12,10 @@ Tag.create([
     { name: '森'},
     { name: '空'},
     { name: '建物'},
-    { name: '自然'}
+    { name: '自然'},
     ])
+    
+Admin.create!(
+   email: 'admin@admin',
+   password: 'testtest'
+)

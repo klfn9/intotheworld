@@ -1,13 +1,21 @@
+<!--<%# if @trip.errors.any? %>-->
+<!--  <%#= @trip.errors.count %>件のエラーが発生しました-->
+<!--  <ul>-->
+<!--    <%# @trip.errors.full_messages.each do |message| %>-->
+<!--      <li><%#= message %></li>-->
+<!--    <%# end %>-->
+<!--  </ul>-->
+<!--<%# end %>-->
+<!--ユーザー側 新規投稿画面-->
 <div class="container">
   <div class="row">
     <div class="col ml-4">
       <h2>投稿フォーム</h2>
     </div>
   </div>
-
+  <%= form_with model: @trip do |f| %>
   <div class="row ml-5">
     <!--投稿フォーム-->
-      <%= form_with model: @trip do |f| %>
     <div class="col mt-4 mb-3">
       <h5 class="mb-3">画像</h5>
       <%= f.file_field :image, accept: "image/*" %>
@@ -22,21 +30,33 @@
   </div>
 
   <!-- 評価 -->
-  <div class="form-group row ml-1" id="star">
+  <div class="form-group row ml-1 mt-3">
     <%= f.label :star,'おすすめ度', class:'col-md-2 ml-5 col-form-label' %>
-    <%= f.hidden_field :star, id: :review_star %>
+    <%#= f.hidden_field :star, id: "review_star" %>
+    <div id="star"></div>
+  </div>
+  <div class="form-group row ml-1">
+    <%= f.label :star,'綺麗さ', class:'col-md-2 ml-5 col-form-label' %>
+    <div id="star2"></div>
+  </div>
+  <div class="form-group row ml-1">
+    <%= f.label :star,'行きやすさ', class:'col-md-2 ml-5 col-form-label' %>
+    <div id="star3"></div>
   </div>
 
 
   <!--タグチェック-->
   <div class="row ml-5 mb-3 mt-4">
-    <div class="col"><span>タグ:</span>
-      <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>
-        <%= tag.label do %>
+    <div class="col-5"><span>タグ:</span>
+      <%# @tags.each do |tag| %>
+        <!--<input type="checkbox"><%#=tag.name %></input>-->
+      <%# end %>
+      <%#= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>
+        <%#= tag.label do %>
           <%#= tag.check_box %>
-          <%= tag.text %>
-        <% end %>
-      <% end %>
+          <%#= tag.text %>
+        <%# end %>
+      <%# end %>
     </div>
   </div>
 
@@ -53,7 +73,6 @@
 
 <!-- 評価javascript -->
   <script>
-
     raty(document.getElementById('star'), {
       size     : 36,
       starOff:  '<%= asset_path('star-off.png') %>',
@@ -62,6 +81,15 @@
       scoreName: 'trip[star]',
       half: true
     });
+
+    // $("#star").raty({
+    //   size     : 36,
+    //   starOff:  '<%#= asset_path('star-off.png') %>',
+    //   starOn : '<%#= asset_path('star-on.png') %>',
+    //   starHalf: '<%#= asset_path('star-half.png') %>',
+    //   scoreName: 'trip[star]',
+    //   half: true
+    // });
 
     raty(document.getElementById('star2'), {
       size     : 36,
@@ -81,13 +109,13 @@
       half: true
     });
 
-   raty(document.getElementById('star4'), {
-      size     : 36,
-      starOff:  '<%= asset_path('star-off.png') %>',
-      starOn : '<%= asset_path('star-on.png') %>',
-      starHalf: '<%= asset_path('star-half.png') %>',
-      scoreName: 'trip[star]',
-      half: true
-    });
+  // raty(document.getElementById('star4'), {
+  //     size     : 36,
+  //     starOff:  '<%#= asset_path('star-off.png') %>',
+  //     starOn : '<%#= asset_path('star-on.png') %>',
+  //     starHalf: '<%#= asset_path('star-half.png') %>',
+  //     scoreName: 'trip[star]',
+  //     half: true
+  //   });
 
   </script>

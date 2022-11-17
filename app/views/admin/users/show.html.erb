@@ -1,0 +1,20 @@
+<!--管理者側 ユーザー詳細ページ-->
+<div class="container">
+  <div class="row">
+    <div class="col-1 mb-4">
+      <h4><%= @user.name %></h4>
+    </div>
+  </div>
+  <!--ユーザーの投稿一覧-->
+  <div class="row">
+    <% @trip.each do |trip| %>
+  <div class="col-6">
+    <%= link_to admin_trip_path(trip.id) do %>
+      <%= image_tag trip.image, size: "550x300" %>
+    <% end %>
+      <p><%= trip.title %></p>
+      <p><%= trip.body %></p>
+      </div>
+    <% end %>
+  </div>
+</div>

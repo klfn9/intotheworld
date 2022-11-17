@@ -1,17 +1,24 @@
 class Public::TripsController < ApplicationController
 
+  # ユーザー
+
   # 空のインスタンスを生成
   def new
     @trip = Trip.new
+    @tags = Tag.all
+    #byebug
   end
 
   # 投稿データの保存
   def create
     @trip = Trip.new(trip_params)
     @trip.user_id = current_user.id
-    @trip.save
+    if @trip.save
     # 一覧画面へ遷移
     redirect_to trips_path
+    else
+      render "new"
+    end 
   end
 
   # すべてのデータを表示
@@ -44,7 +51,7 @@ class Public::TripsController < ApplicationController
     trip = Trip.find(params[:id])
     trip.destroy
      # 一覧画面へ遷移
-    redirect_to trip_path
+    redirect_to trips_path
   end
 
   def search
@@ -59,6 +66,6 @@ class Public::TripsController < ApplicationController
 
   def trip_params
     params.require(:trip).permit(:title, :image, :body, :star)
-    # params.require(:trip).permit(:title, :image, :body, :star, tag_ids: [])
+    #params.require(:trip).permit(:title, :image, :body, :star, tag_ids: [])
   end
 end

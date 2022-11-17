@@ -1,3 +1,4 @@
+<!--ユーザー側　投稿詳細画面-->
 <div class="container">
   <div class="row ml-5 mt-4">
     <%= image_tag @trip.image, size: "630x350" %>
@@ -10,31 +11,36 @@
         <h6><%= @trip.body %></h6>
       </div>
     </div>
+    <!--星評価表示-->
+    <div class="row ml-5 my-4">
+    <div id="star-rate<%= @trip.id%>"></div>
+
+    <script>
+      raty(document.getElementById('star-rate<%= @trip.id %>'), {
+        starOff:  '<%= asset_path('star-off.png') %>',
+        starOn : '<%= asset_path('star-on.png') %>',
+        starHalf: '<%= asset_path('star-half.png') %>',
+        scoreName: 'trip[star]',
+        half: true,
+        readOnly: true,
+        score: <%= @trip.star %>,
+      });
+    </script>
+    
+    </div>
+    
     <div class="row ml-5 mt-4">
       ユーザー: <%= @trip.user.name %>
     </div>
     <div class="row ml-5">
       <%= @trip.created_at.strftime('%Y/%m/%d') %>
     </div>
+
     <div class="row ml-5 mt-2">
       <%= link_to "編集", edit_trip_path(@trip.id) %> |
       <%= link_to "削除", trip_path(@trip.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
     </div>
-    
-    <!--星評価表示-->
-    <div id="star-rate<%= @trip.id%>"></td>
-             <script>
-              $('#star-rate<%= @trip.id %>').empty();
-              $('#star-rate<%= @trip.id%>').raty({
-                 size      : 36,
-                 starOff   : '<%= asset_path('star-off.png') %>',
-                 starOn    : '<%= asset_path('star-on.png') %>',
-                 half      : true,
-                 readOnly: true,
-                 score: <%= @trip.star %>,
-               });
-             </script>
-    </div>
+
 
     <!--コメント機能-->
     <div class="row ml-4 mt-4">
