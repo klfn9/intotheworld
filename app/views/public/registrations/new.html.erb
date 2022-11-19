@@ -1,7 +1,7 @@
 <!--ユーザー側 新規登録ページ-->
 <div class="container">
   <div class="row ml-4">
-    <h2>Sign up</h2>
+    <h2>新規登録</h2>
   </div>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
@@ -12,12 +12,12 @@
     <%= f.text_field :name %>
   </div>
 
-  <div class="field ml-5 my-3">
+  <div class="field ml-5 mt-4 mb-3">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
 
-  <div class="field ml-5 my-3">
+  <div class="field ml-5 mt-5 my-3">
     <%= f.label :password %>
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
@@ -31,7 +31,7 @@
   </div>
 
   <div class="actions ml-5 mb-2">
-    <%= f.submit "Sign up", class: " btn btn-outline-info" %>
+    <%= f.submit "新規登録", class: " btn btn-outline-info" %>
   </div>
 <% end %>
 

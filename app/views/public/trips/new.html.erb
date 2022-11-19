@@ -9,12 +9,12 @@
 <!--ユーザー側 新規投稿画面-->
 <div class="container">
   <div class="row">
-    <div class="col ml-4">
+    <div class="col">
       <h2>投稿フォーム</h2>
     </div>
   </div>
   <%= form_with model: @trip do |f| %>
-  <div class="row ml-5">
+  <div class="row">
     <!--投稿フォーム-->
     <div class="col mt-4 mb-3">
       <h5 class="mb-3">画像</h5>
@@ -22,7 +22,7 @@
     </div>
   </div>
 
-  <div class="row ml-5">
+  <div class="row">
     <div class="col mb-3">
       <h5 class="mb-3">題名</h5>
       <%= f.text_field :title, size: 40 %>
@@ -30,23 +30,23 @@
   </div>
 
   <!-- 評価 -->
-  <div class="form-group row ml-1 mt-3">
-    <%= f.label :star,'おすすめ度', class:'col-md-2 ml-5 col-form-label' %>
+  <div class="form-group row mt-3">
+    <%= f.label :star,'おすすめ度', class:'col-md-2 col-form-label' %>
     <%#= f.hidden_field :star, id: "review_star" %>
     <div id="star"></div>
   </div>
-  <div class="form-group row ml-1">
-    <%= f.label :star,'綺麗さ', class:'col-md-2 ml-5 col-form-label' %>
+  <div class="form-group row">
+    <%= f.label :star,'綺麗さ', class:'col-md-2 col-form-label' %>
     <div id="star2"></div>
   </div>
-  <div class="form-group row ml-1">
-    <%= f.label :star,'行きやすさ', class:'col-md-2 ml-5 col-form-label' %>
+  <div class="form-group row">
+    <%= f.label :star,'行きやすさ', class:'col-md-2 col-form-label' %>
     <div id="star3"></div>
   </div>
 
 
   <!--タグチェック-->
-  <div class="row ml-5 mb-3 mt-4">
+  <div class="row mb-3 mt-4">
     <div class="col-5"><span>タグ:</span>
       <%# @tags.each do |tag| %>
         <!--<input type="checkbox"><%#=tag.name %></input>-->
@@ -60,7 +60,7 @@
     </div>
   </div>
 
-  <div class="row ml-5">
+  <div class="row">
     <div class="col">
     <h5 class="mb-3">本文</h5>
       <%= f.text_area :body, size: "62x5" %>
@@ -96,7 +96,7 @@
       starOff:  '<%= asset_path('star-off.png') %>',
       starOn : '<%= asset_path('star-on.png') %>',
       starHalf: '<%= asset_path('star-half.png') %>',
-      scoreName: 'trip[star]',
+      scoreName: 'trip[star2]',
       half: true
     });
 
@@ -105,7 +105,7 @@
       starOff:  '<%= asset_path('star-off.png') %>',
       starOn : '<%= asset_path('star-on.png') %>',
       starHalf: '<%= asset_path('star-half.png') %>',
-      scoreName: 'trip[star]',
+      scoreName: 'trip[star3]',
       half: true
     });
 

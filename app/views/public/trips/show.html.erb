@@ -1,51 +1,46 @@
 <!--ユーザー側　投稿詳細画面-->
 <div class="container">
-  <div class="row ml-5 mt-4">
+  <div class="row">
+    <div class="col-sm-7 pl-0">
     <%= image_tag @trip.image, size: "630x350" %>
+    </div>
   </div>
-    <div class="row ml-5 mt-3">
+    <div class="row mt-3">
       <h3><%= @trip.title %></h3>
     </div>
-    <div class="row ml-5 mt-3">
-      <div class="col-10 ml-1">
+    <div class="row mt-3">
+      <div class="col-sm-10">
         <h6><%= @trip.body %></h6>
       </div>
     </div>
     <!--星評価表示-->
-    <div class="row ml-5 my-4">
-    <div id="star-rate<%= @trip.id%>"></div>
-
-    <script>
-      raty(document.getElementById('star-rate<%= @trip.id %>'), {
-        starOff:  '<%= asset_path('star-off.png') %>',
-        starOn : '<%= asset_path('star-on.png') %>',
-        starHalf: '<%= asset_path('star-half.png') %>',
-        scoreName: 'trip[star]',
-        half: true,
-        readOnly: true,
-        score: <%= @trip.star %>,
-      });
-    </script>
-    
+    <div class="row my-4">
+      おすすめ度：<div id="star<%= @trip.id%>"></div>
     </div>
-    
-    <div class="row ml-5 mt-4">
+    <div class="row my-4">
+      綺麗さ：<div id="star2<%= @trip.id%>"></div>
+    </div>
+    <div class="row my-4">
+      行きやすさ：<div id="star3<%= @trip.id%>"></div>
+    </div>
+
+    <div class="row mt-4">
       ユーザー: <%= @trip.user.name %>
     </div>
-    <div class="row ml-5">
+    <div class="row">
       <%= @trip.created_at.strftime('%Y/%m/%d') %>
     </div>
 
-    <div class="row ml-5 mt-2">
+    <div class="row mt-2">
       <%= link_to "編集", edit_trip_path(@trip.id) %> |
       <%= link_to "削除", trip_path(@trip.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
     </div>
 
 
     <!--コメント機能-->
-    <div class="row ml-4 mt-4">
+    <div class="row mt-4">
       <% @trip.trip_comments.each do |trip_comment| %>
-    <div class="col-4 ml-2">
+    <div class="col-4 pl-0">
       <%= trip_comment.user.name %>
       <%= trip_comment.created_at.strftime('%Y/%m/%d') %> <%= trip_comment.comment %>
     <% if trip_comment.user == current_user %>
@@ -54,10 +49,44 @@
     <% end %>
   <% end %>
 </div>
-<div class="row ml-5 mt-3">
+<div class="row mt-3">
   <%= form_with model: [@trip, @trip_comment] do |f| %>
     <%= f.text_area :comment, placeholder: "コメントをここに" %>
     <%= f.submit "送信する" %>
   <% end %>
   </div>
 </div>
+
+
+
+<script>
+      raty(document.getElementById('star<%= @trip.id %>'), {
+        starOff:  '<%= asset_path('star-off.png') %>',
+        starOn : '<%= asset_path('star-on.png') %>',
+        starHalf: '<%= asset_path('star-half.png') %>',
+        half: true,
+        readOnly: true,
+        score: <%= @trip.star %>,
+      });
+
+       raty(document.getElementById('star2<%= @trip.id %>'), {
+      size     : 36,
+      starOff:  '<%= asset_path('star-off.png') %>',
+      starOn : '<%= asset_path('star-on.png') %>',
+      starHalf: '<%= asset_path('star-half.png') %>',
+      half: true,
+      readOnly: true,
+      score: <%= @trip.star2 %>,
+
+    });
+
+    raty(document.getElementById('star3<%= @trip.id %>'), {
+      size     : 36,
+      starOff:  '<%= asset_path('star-off.png') %>',
+      starOn : '<%= asset_path('star-on.png') %>',
+      starHalf: '<%= asset_path('star-half.png') %>',
+      half: true,
+      readOnly: true,
+      score: <%= @trip.star3 %>,
+    });
+    </script>

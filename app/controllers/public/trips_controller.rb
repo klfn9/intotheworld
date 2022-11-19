@@ -18,7 +18,7 @@ class Public::TripsController < ApplicationController
     redirect_to trips_path
     else
       render "new"
-    end 
+    end
   end
 
   # すべてのデータを表示
@@ -65,7 +65,7 @@ class Public::TripsController < ApplicationController
   private
 
   def trip_params
-    params.require(:trip).permit(:title, :image, :body, :star)
+    params.require(:trip).permit(:title, :image, :body, :star, :star2, :star3)
     #params.require(:trip).permit(:title, :image, :body, :star, tag_ids: [])
   end
 end

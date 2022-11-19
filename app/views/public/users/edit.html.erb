@@ -1,19 +1,19 @@
 <!--ユーザー編集-->
 <div class="container">
   <div class="row">
-    <div class="col ml-5 mb-3">
+    <div class="col-sm mb-3">
       <h3>ユーザー編集</h3>
     </div>
   </div>
-  <div class="row ml-5">
+  <div class="row">
     <!--編集フォーム-->
       <%= form_with model: @user do |f| %>
-    <div class="col ml-2">
+    <div class="col-sm">
       <%= f.text_field :name %>
     </div>
     <div class="row">
-      <div class="col-5"></div>
-      <div class="col mt-3">
+      <div class="col-sm-5"></div>
+      <div class="col-sm ml-3 mt-3">
         <%= f.submit "変更を保存", class: "btn btn-outline-success" %>
       </div>
     </div>
