@@ -11,6 +11,17 @@
         <h6><%= @trip.body %></h6>
       </div>
     </div>
+    <!--星評価表示-->
+    <div class="row my-4 ml-5">
+      おすすめ度：<div id="star<%= @trip.id%>"></div>
+    </div>
+    <div class="row my-4 ml-5">
+      綺麗さ：<div id="star2<%= @trip.id%>"></div>
+    </div>
+    <div class="row my-4 ml-5">
+      行きやすさ：<div id="star3<%= @trip.id%>"></div>
+    </div>
+    
     <div class="row ml-5 mt-4">
       ユーザー: <%= @trip.user.name %>
     </div>
@@ -21,3 +32,36 @@
       <%= link_to "削除", admin_trip_path(@trip.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
     </div>
 </div>
+
+
+<script>
+      raty(document.getElementById('star<%= @trip.id %>'), {
+        starOff:  '<%= asset_path('star-off.png') %>',
+        starOn : '<%= asset_path('star-on.png') %>',
+        starHalf: '<%= asset_path('star-half.png') %>',
+        half: true,
+        readOnly: true,
+        score: <%= @trip.star %>,
+      });
+
+       raty(document.getElementById('star2<%= @trip.id %>'), {
+      size     : 36,
+      starOff:  '<%= asset_path('star-off.png') %>',
+      starOn : '<%= asset_path('star-on.png') %>',
+      starHalf: '<%= asset_path('star-half.png') %>',
+      half: true,
+      readOnly: true,
+      score: <%= @trip.star2 %>,
+
+    });
+
+    raty(document.getElementById('star3<%= @trip.id %>'), {
+      size     : 36,
+      starOff:  '<%= asset_path('star-off.png') %>',
+      starOn : '<%= asset_path('star-on.png') %>',
+      starHalf: '<%= asset_path('star-half.png') %>',
+      half: true,
+      readOnly: true,
+      score: <%= @trip.star3 %>,
+    });
+    </script>

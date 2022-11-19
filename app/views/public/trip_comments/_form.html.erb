@@ -1,0 +1,6 @@
+<div class="row mt-3">
+  <%= form_with model: [@trip, @comment] do |f| %>
+    <%= f.text_area :comment, placeholder: "コメントをここに" %>
+    <%= f.submit "送信する" %>
+  <% end %>
+  </div>

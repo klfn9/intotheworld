@@ -48,15 +48,15 @@
   <!--タグチェック-->
   <div class="row mb-3 mt-4">
     <div class="col-5"><span>タグ:</span>
-      <%# @tags.each do |tag| %>
-        <!--<input type="checkbox"><%#=tag.name %></input>-->
+      <!--<%# @tags.each do |tag| %>-->
+      <!--  <input type="checkbox"><%#=tag.name %></input>-->
       <%# end %>
-      <%#= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>
-        <%#= tag.label do %>
-          <%#= tag.check_box %>
-          <%#= tag.text %>
-        <%# end %>
-      <%# end %>
+      <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>
+        <%= tag.label do %>
+          <%= tag.check_box %>
+          <%= tag.text %>
+        <% end %>
+      <% end %>
     </div>
   </div>
 

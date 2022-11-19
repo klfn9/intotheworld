@@ -38,24 +38,13 @@
 
 
     <!--コメント機能-->
-    <div class="row mt-4">
-      <% @trip.trip_comments.each do |trip_comment| %>
-    <div class="col-4 pl-0">
-      <%= trip_comment.user.name %>
-      <%= trip_comment.created_at.strftime('%Y/%m/%d') %> <%= trip_comment.comment %>
-    <% if trip_comment.user == current_user %>
-      <%= link_to "削除", trip_trip_comment_path(trip_comment.trip, trip_comment), method: :delete, data: { confirm: "本当に削除しますか？" } %>
-    </div>
-    <% end %>
-  <% end %>
-</div>
-<div class="row mt-3">
-  <%= form_with model: [@trip, @trip_comment] do |f| %>
-    <%= f.text_area :comment, placeholder: "コメントをここに" %>
-    <%= f.submit "送信する" %>
-  <% end %>
-  </div>
-</div>
+  <!--  <div id="comments_area">-->
+  <!--    <%#= render 'trip_comments/comment', trip: @trip %>-->
+  <!--  </div>-->
+  <!--  <div class="new-comment">-->
+  <!--     <%#= render 'trip_comments/form', trip: @trip, comment: @comment %>-->
+  <!--  </div>-->
+  <!--</div>-->
 
 
 

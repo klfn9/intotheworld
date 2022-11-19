@@ -25,6 +25,16 @@ class Public::TripsController < ApplicationController
   def index
     @trips = Trip.all
     @trips = params[:tag_id].present? ? Tag.find(params[:tag_id]).trips : Trip.all
+    
+    if params[:latest]
+      @trips = Trip.latest
+    elsif params[:old]
+      @trips = Trip.old
+    elsif params[:star_count]
+      @trips = Trip.star_count
+    else
+     @trips = Trip.all
+    end
   end
 
   # 一つずつ取り出す
@@ -65,7 +75,7 @@ class Public::TripsController < ApplicationController
   private
 
   def trip_params
-    params.require(:trip).permit(:title, :image, :body, :star, :star2, :star3)
+    params.require(:trip).permit(:title, :image, :body, :star, :star2, :star3, tag_ids: [])
     #params.require(:trip).permit(:title, :image, :body, :star, tag_ids: [])
   end
 end
