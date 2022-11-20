@@ -1,5 +1,5 @@
 class Public::TripsController < ApplicationController
-
+  before_action :authenticate_user!,except: [:show]
   # ユーザー
 
   # 空のインスタンスを生成
@@ -13,6 +13,7 @@ class Public::TripsController < ApplicationController
   def create
     @trip = Trip.new(trip_params)
     @trip.user_id = current_user.id
+    @trip.star_average = (@trip.star.to_f + @trip.star2.to_f + @trip.star3.to_f).fdiv(3).floor(1)
     if @trip.save
     # 一覧画面へ遷移
     redirect_to trips_path

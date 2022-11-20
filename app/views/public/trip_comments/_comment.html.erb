@@ -1,6 +1,6 @@
 <!--コメント機能-->
     <div class="row mt-4">
-      <% @trip.trip_comments.each do |trip_comment| %>
+      <% trip.trip_comments.each do |trip_comment| %>
     <div class="col-4 pl-0">
       <%= trip_comment.user.name %>
       <%= trip_comment.created_at.strftime('%Y/%m/%d') %> <%= trip_comment.comment %>

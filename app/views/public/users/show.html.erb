@@ -6,15 +6,16 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-sm-1">
-      <h4><%= @user.name %></h4>
+    <div class="col-sm-3 px-0">
+      <%= image_tag @user.get_profile_image(70,70), class: "rounded-circle pl-0" %>
+      <strong class="ml-3"><%= @user.name %></strong>
     </div>
 
-    <div class="col-sm-2 mb-3">
+    <div class="col-sm-2 mt-3 px-0">
       <% if @user == current_user && @user.email != "guest@example.com" %>
       <%= link_to "プロフィール編集", edit_user_path(@user.id), class: "btn btn-outline-secondary" %>
     </div>
-    <div class="col-sm-2 mb-3">
+    <div class="col-sm-2 mt-3">
       <%= link_to "退会する", unsubscribe_path, method: :get, class: "btn btn-outline-danger" %>
     </div>
     <% end %>
