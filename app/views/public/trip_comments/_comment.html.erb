@@ -1,7 +1,7 @@
 <!--コメント機能-->
-    <div class="row mt-4">
+    <div class="mt-4 pl-0">
       <% trip.trip_comments.each do |trip_comment| %>
-    <div class="col-4 pl-0">
+    <div>
       <%= trip_comment.user.name %>
       <%= trip_comment.created_at.strftime('%Y/%m/%d') %> <%= trip_comment.comment %>
     <% if trip_comment.user == current_user %>

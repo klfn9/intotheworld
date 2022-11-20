@@ -1,8 +1,9 @@
 <!--ユーザー側　投稿詳細画面-->
 <div class="container">
   <div class="row">
-      <div class="col pl-0">
-        <%= image_tag @trip.user.get_profile_image(50,50), class: "rounded-circle pl-0" %><%= @trip.user.name %>
+      <div class="col pl-0 mb-3">
+        <%= image_tag @trip.user.get_profile_image(50,50), class: "rounded-circle pl-0" %>
+        <strong class="ml-3"><%= @trip.user.name %></strong>
       </div>
     </div>
   <div class="row">
@@ -42,7 +43,7 @@
 
 
     <!--コメント機能-->
-    <div>
+  <div>
     <div id="comments_area">
       <%= render 'public/trip_comments/comment', trip: @trip %>
     </div>

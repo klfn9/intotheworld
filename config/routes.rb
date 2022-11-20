@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-root to: 'homes#index'
+root to: 'homes#top'
 
 
 # ゲストログイン
@@ -26,7 +26,7 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
    resources :users, only: [:index, :show, :update]
    resources :trips, only: [:index, :show, :destroy]
    # 論理削除用のルーティング
-  patch '/users/:id/withdraw' => 'users#withdraw', as: 'withdraw'
+  patch '/admin/:id/withdraw' => 'users#withdraw', as: 'withdraw'
   end
 
 
