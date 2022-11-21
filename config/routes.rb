@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-root to: 'homes#top'
+root to: 'public/trips#index'
 
 
 # ゲストログイン

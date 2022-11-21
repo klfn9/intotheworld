@@ -25,8 +25,8 @@ class Public::TripsController < ApplicationController
   # すべてのデータを表示
   def index
     @trips = Trip.all
-    @trips = params[:tag_id].present? ? Tag.find(params[:tag_id]).trips : Trip.all
-    
+    @trips = params[:tag_id].present? ? Tag.find(params[:tag_id]).trips:
+
     if params[:latest]
       @trips = Trip.latest
     elsif params[:old]
@@ -34,7 +34,7 @@ class Public::TripsController < ApplicationController
     elsif params[:star_count]
       @trips = Trip.star_count
     else
-     @trips = Trip.all
+     @trips = Trip.all.order(created_at: :desc)
     end
   end
 

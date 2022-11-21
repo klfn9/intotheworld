@@ -13,6 +13,11 @@ Tag.create([
     { name: '空'},
     { name: '建物'},
     { name: '自然'},
+    { name: '水' },
+    { name: '火' },
+    { name: '動物'},
+    { name: '植物'},
+    { name: 'その他'},
     ])
     
 Admin.create!(

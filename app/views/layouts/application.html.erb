@@ -13,49 +13,55 @@
 
   <body>
     <header>
-      <nav class="navbar navbar-expand navbar-dark">
-        <div class="container">
-    <% if user_signed_in? %>
-    <ul class="navbar-nav ml-auto">
-      <li class="mx-3 my-5">
-        <%= link_to '投稿フォーム', new_trip_path, class: "btn btn-outline-info" %>
-      </li>
-      <li class="mx-3 my-5">
-      <%= link_to 'マイページ', user_path(current_user.id), class: "btn btn-outline-info" %>
-      </li>
-      <li class="mx-3 my-5">
-        <%= link_to '投稿一覧', trips_path, class: "btn btn-outline-info" %>
-      </li>
-      <li class="mx-3 my-5">
-        <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn btn-outline-info" %>
-      </li>
-    </ul>
-    <% elsif admin_signed_in? %>
-    <ul class="navbar-nav ml-auto">
-      <li class="mx-3 my-5">
-        <%= link_to "ユーザー一覧", admin_users_path, class: "btn btn-outline-info" %>
-      </li>
-      <li class="mx-3 my-5">
-        <%= link_to "レビュー一覧", admin_trips_path, class: "btn btn-outline-info" %>
-      </li>
-      <li class="mx-3 my-5">
-        <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "btn btn-outline-info" %>
-      </li>
-    </ul>
-    <% else %>
-    <ul class="navbar-nav ml-auto">
-      <li class="mx-3 my-5">
-        <%= link_to "新規登録", new_user_registration_path, class: "btn btn-outline-info" %>
-      </li>
-      <li class="mx-3 my-5">
-        <%= link_to "ログイン", new_user_session_path, class: "btn btn-outline-info" %>
-      </li>
-      <li class="mx-3 my-5">
-        <%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post, class: "btn btn-outline-info" %>
-      </li>
-    </ul>
-    <% end %>
-    </div>
+      <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+
+            <div class="navbar-brand text-light ml-3"><span>Into the World</span></div>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <% if user_signed_in? %>
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item active mx-3 mt-3">
+                <%= link_to '投稿フォーム', new_trip_path, class: "text-light" %>
+              </li>
+              <li class="mx-3 mt-3">
+              <%= link_to 'マイページ', user_path(current_user.id), class: "text-light" %>
+              </li>
+              <li class="mx-3 mt-3">
+                <%= link_to '投稿一覧', trips_path, class: "text-light" %>
+              </li>
+              <li class="mx-3 mt-3 mb-3">
+                <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "text-light" %>
+              </li>
+            </ul>
+            <% elsif admin_signed_in? %>
+            <ul class="navbar-nav ml-auto">
+              <li class="mx-3 mt-3">
+                <%= link_to "ユーザー一覧", admin_users_path, class: "text-light" %>
+              </li>
+              <li class="mx-3 mt-3">
+                <%= link_to "レビュー一覧", admin_trips_path, class: "text-light" %>
+              </li>
+              <li class="mx-3 mt-3">
+                <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "text-light" %>
+              </li>
+            </ul>
+            <% else %>
+            <ul class="navbar-nav ml-auto">
+              <li class="mx-3 mt-3 ">
+                <%= link_to "新規登録", new_user_registration_path, class: "text-light" %>
+              </li>
+              <li class="mx-3 mt-3">
+                <%= link_to "ログイン", new_user_session_path, class: "text-light" %>
+              </li>
+              <li class="mx-3 mt-3 mb-3">
+                <%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post, class: "text-light" %>
+              </li>
+            </ul>
+            <% end %>
+          </div>
+
     </nav>
     </header>
     <%= yield %>

@@ -7,13 +7,14 @@ class Admin::UsersController < ApplicationController
   def index
     @user = User.all
      # ページネーションをつけたいデータに.page(params[:page])を追加
-    #@users = User.all.page(params[:page]).per(10)
+    @users = User.all.page(params[:page]).per(10)
   end
 
   # ユーザー詳細
   def show
     @user = User.find(params[:id])
     @trip = @user.trips
+    @trip = Trip.all.order(created_at: :desc)
   end
 
   # 退会処理

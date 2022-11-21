@@ -27,14 +27,15 @@
     <div class="row my-4">
       行きやすさ：<div id="star3<%= @trip.id%>"></div>
     </div>
-    
-    <div class="row  mt-2">
+
+    <div class="row mt-2 mb-5">
       <%= link_to "削除", admin_trip_path(@trip.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
     </div>
 </div>
 
 
 <script>
+document.getElementById('star<%= @trip.id%>').innerHTML="";
       raty(document.getElementById('star<%= @trip.id %>'), {
         starOff:  '<%= asset_path('star-off.png') %>',
         starOn : '<%= asset_path('star-on.png') %>',

@@ -1,5 +1,5 @@
 <!--管理者側 ユーザー詳細ページ-->
-<div class="container">
+<div class="container mt-3">
   <!--<h2 class="mb-3">-->
   <!--  投稿一覧-->
   <!--</h2>-->
@@ -12,7 +12,7 @@
   <!--ユーザーの投稿一覧-->
   <div class="row">
     <% @trip.each do |trip| %>
-  <div class="col-6">
+  <div class="col-6 mt-3 border-bottom">
     <% star=[(trip.star.nil?) ? 0 : trip.star , (trip.star2.nil?) ? 0 : trip.star2 , (trip.star3.nil?) ? 0 : trip.star3] %>
     <%= link_to admin_trip_path(trip.id) do %>
       <%= image_tag trip.image, size: "550x300" %>

@@ -3,11 +3,11 @@
   <h2 class="mt-3 mb-4">投稿一覧</h2>
 
   <!--投稿繰り返し処理-->
-  <div class="row">
+  <div class="row justify-content-center">
     <% @trips.each do |trip| %>
-    <div class="col-6">
+    <div class="col-6 border-bottom">
       <div class="row">
-      <div class="col mb-3">
+      <div class="col mb-3 mt-3">
         <%= image_tag trip.user.get_profile_image(50,50), class: "rounded-circle pl-0" %>
         <strong class="ml-3"><%= trip.user.name %></strong>
         </div>
@@ -42,5 +42,6 @@
       <p>コメント数：<%= trip.trip_comments.count %></p>
     </div>
     <% end %>
+    <%= paginate @trip %>
   </div>
 </div>

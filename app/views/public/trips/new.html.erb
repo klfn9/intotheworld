@@ -9,7 +9,7 @@
 <!--ユーザー側 新規投稿画面-->
 <div class="container">
   <div class="row">
-    <div class="col">
+    <div class="col mt-3">
       <h2>投稿フォーム</h2>
     </div>
   </div>
@@ -73,6 +73,7 @@
 
 <!-- 評価javascript -->
   <script>
+  document.getElementById('star<%= @trip.id%>').innerHTML="";
     raty(document.getElementById('star'), {
       size     : 36,
       starOff:  '<%= asset_path('star-off.png') %>',
@@ -90,7 +91,7 @@
     //   scoreName: 'trip[star]',
     //   half: true
     // });
-
+    document.getElementById('star2<%= @trip.id%>').innerHTML="";
     raty(document.getElementById('star2'), {
       size     : 36,
       starOff:  '<%= asset_path('star-off.png') %>',
@@ -99,7 +100,8 @@
       scoreName: 'trip[star2]',
       half: true
     });
-
+    
+    document.getElementById('star3<%= @trip.id%>').innerHTML="";
     raty(document.getElementById('star3'), {
       size     : 36,
       starOff:  '<%= asset_path('star-off.png') %>',

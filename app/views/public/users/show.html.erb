@@ -1,7 +1,7 @@
 <!--ユーザー詳細-->
 <div class="container">
   <div class="row">
-    <div class="col-sm mb-4 pl-0">
+    <div class="col-sm mb-4 pl-0 mt-3">
       <h3>マイページ</h3>
     </div>
   </div>
@@ -15,7 +15,7 @@
       <% if @user == current_user && @user.email != "guest@example.com" %>
       <%= link_to "プロフィール編集", edit_user_path(@user.id), class: "btn btn-outline-secondary" %>
     </div>
-    <div class="col-sm-2 mt-3">
+    <div class="col-sm-2 mt-3 pl-0">
       <%= link_to "退会する", unsubscribe_path, method: :get, class: "btn btn-outline-danger" %>
     </div>
     <% end %>
@@ -24,12 +24,12 @@
   <!--ユーザーの投稿一覧-->
   <div class="row">
     <% @trip.each do |trip| %>
-  <div class="col-sm-6 pl-0 mt-4">
+  <div class="col-sm-6 pl-0 mt-4 border-bottom">
     <% star=[(trip.star.nil?) ? 0 : trip.star , (trip.star2.nil?) ? 0 : trip.star2 , (trip.star3.nil?) ? 0 : trip.star3] %>
     <%= link_to trip_path(trip.id) do %>
       <%= image_tag trip.image, size: "550x300" %>
     <% end %>
-      <p><%= trip.title %></p>
+      <h4><%= trip.title %></h4>
       <!--<p><%#= trip.body %></p>-->
       <div class="row my-4">
       <div class="col-sm ml-0">

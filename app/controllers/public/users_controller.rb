@@ -5,7 +5,7 @@ class Public::UsersController < ApplicationController
   # ユーザー詳細
   def show
     @user = User.find(params[:id])
-    @trip = @user.trips
+    @trip = @user.trips.order(created_at: :desc)
   end
 
   # ユーザー編集

@@ -6,8 +6,9 @@ class Admin::TripsController < ApplicationController
   
   # すべてのデータを表示
   def index
-    @trips = Trip.all
+    @trip = Trip.all.page(params[:page]).per(12)
     #@trips = params[:tag_id].present? ? Tag.find(params[:tag_id]).trips : Trip.all
+    @trips = Trip.all.order(created_at: :desc)
   end
 
   # 一つずつ取り出す

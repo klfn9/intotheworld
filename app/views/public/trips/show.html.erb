@@ -1,7 +1,7 @@
 <!--ユーザー側　投稿詳細画面-->
 <div class="container">
   <div class="row">
-      <div class="col pl-0 mb-3">
+      <div class="col pl-0 mb-3 mt-3">
         <%= image_tag @trip.user.get_profile_image(50,50), class: "rounded-circle pl-0" %>
         <strong class="ml-3"><%= @trip.user.name %></strong>
       </div>
@@ -55,6 +55,7 @@
 
 
 <script>
+    document.getElementById('star<%= @trip.id%>').innerHTML="";
       raty(document.getElementById('star<%= @trip.id %>'), {
         starOff:  '<%= asset_path('star-off.png') %>',
         starOn : '<%= asset_path('star-on.png') %>',
@@ -64,6 +65,7 @@
         score: <%= @trip.star %>,
       });
 
+    document.getElementById('star2<%= @trip.id%>').innerHTML="";
        raty(document.getElementById('star2<%= @trip.id %>'), {
       size     : 36,
       starOff:  '<%= asset_path('star-off.png') %>',
@@ -72,9 +74,9 @@
       half: true,
       readOnly: true,
       score: <%= @trip.star2 %>,
-
     });
 
+  document.getElementById('star3<%= @trip.id%>').innerHTML="";
     raty(document.getElementById('star3<%= @trip.id %>'), {
       size     : 36,
       starOff:  '<%= asset_path('star-off.png') %>',
