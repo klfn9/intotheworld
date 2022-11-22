@@ -1,5 +1,5 @@
 class Public::UsersController < ApplicationController
-  
+  before_action :authenticate_user!,only: [:edit]
   #ユーザー側
 
   # ユーザー詳細

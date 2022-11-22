@@ -15,7 +15,7 @@
       <h3><%= @trip.title %></h3>
     </div>
     <div class="row mt-3">
-      <div class="col-sm-10">
+      <div class="col-sm-7 pl-0">
         <h6><%= @trip.body %></h6>
       </div>
     </div>
@@ -43,6 +43,7 @@
 
 
     <!--コメント機能-->
+  <% if user_signed_in? %>
   <div>
     <div id="comments_area">
       <%= render 'public/trip_comments/comment', trip: @trip %>
@@ -51,6 +52,8 @@
        <%= render 'public/trip_comments/form', trip: @trip %>
     </div>
   </div>
+  <% end %>
+</div>
 
 
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_11_19_051515) do
+ActiveRecord::Schema.define(version: 2022_11_20_064918) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -84,6 +84,7 @@ ActiveRecord::Schema.define(version: 2022_11_19_051515) do
     t.float "star"
     t.float "star2"
     t.float "star3"
+    t.float "star_average"
   end
 
   create_table "users", force: :cascade do |t|

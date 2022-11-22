@@ -1,5 +1,6 @@
 class Public::TripsController < ApplicationController
-  before_action :authenticate_user!,except: [:show]
+  before_action :authenticate_user!,only: [:edit
+]
   # ユーザー
 
   # 空のインスタンスを生成

@@ -6,9 +6,9 @@ class ApplicationController < ActionController::Base
      trips_path
    end
   
-   # ログアウトしたらログインページへ
+   # ログアウトしたら投稿一覧へ
    def after_sign_out_path_for(resource)
-     new_user_session_path
+     trips_path
    end
 
   protected
