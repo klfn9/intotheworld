@@ -44,7 +44,7 @@
 
     <!--コメント機能-->
   <% if user_signed_in? %>
-  <div>
+  <div class="mb-5">
     <div id="comments_area">
       <%= render 'public/trip_comments/comment', trip: @trip %>
     </div>

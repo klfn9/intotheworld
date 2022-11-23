@@ -25,18 +25,19 @@ class Public::TripsController < ApplicationController
 
   # すべてのデータを表示
   def index
-    @trips = Trip.all
-    @trips = params[:tag_id].present? ? Tag.find(params[:tag_id]).trips:
-
-    if params[:latest]
-      @trips = Trip.latest
+    @trips = if params[:tag_id].present?
+      Tag.find(params[:tag_id]).trips
+    elsif params[:latest]
+      Trip.latest
     elsif params[:old]
-      @trips = Trip.old
+      Trip.old
     elsif params[:star_count]
-      @trips = Trip.star_count
+      Trip.star_count
     else
-     @trips = Trip.all.order(created_at: :desc)
+      Trip.all.order(created_at: :desc)
     end
+
+    @trips = @trips.page(params[:page]).per(10)
   end
 
   # 一つずつ取り出す
@@ -67,9 +68,9 @@ class Public::TripsController < ApplicationController
   end
 
   def search
-    @trips = Trip.search(params[:keyword])
+    @trips = Trip.search(params[:keyword]).page(params[:page]).per(10)
     @keyword = params[:keyword]
-  render "index"
+    render "index"
   end
 
 

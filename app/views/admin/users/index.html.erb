@@ -18,7 +18,7 @@
             </tr>
           </thead>
           <tbody>
-            <% @user.each do |user| %>
+            <% @users.each do |user| %>
             <tr>
               <td>
                 <%= user.id %>
@@ -32,7 +32,11 @@
                 <%= user.email %>
               </td>
               <td>
-                <%= link_to "削除する", admin_withdraw_path(user), method: :patch, data: { confirm: "本当に削除しますか？" }, class: "btn btn-outline-danger btn-block" %>
+                <% if user.is_deleted %>
+                  <%= link_to "再開", admin_withdraw_path(user), method: :patch, data: { confirm: "本当に再開しますか？" }, class: "btn btn-outline-success btn-block" %>
+                <% else %>
+                  <%= link_to "削除する", admin_withdraw_path(user), method: :patch, data: { confirm: "本当に削除しますか？" }, class: "btn btn-outline-danger btn-block" %>
+                <% end %>
               </td>
             </tr>
           <% end %>
