@@ -1,12 +1,12 @@
 class Admin::TripsController < ApplicationController
   # Adminアカウントがログインしないと使えないようにする
   before_action :authenticate_admin!
-  
+
   # 管理者側
-  
+
   # すべてのデータを表示
   def index
-    @trip = Trip.all.page(params[:page]).per(12)
+    @trip = Trip.all.page(params[:page]).per(10)
     #@trips = params[:tag_id].present? ? Tag.find(params[:tag_id]).trips : Trip.all
     if params[:latest]
       @trips = Trip.latest
@@ -24,7 +24,7 @@ class Admin::TripsController < ApplicationController
     @trip = Trip.find(params[:id])
     @trip_comment = TripComment.new
   end
-  
+
   # 削除機能
   def destroy
     trip = Trip.find(params[:id])
