@@ -1,8 +1,5 @@
 <!--管理者側 ユーザー詳細ページ-->
 <div class="container mt-3">
-  <!--<h2 class="mb-3">-->
-  <!--  投稿一覧-->
-  <!--</h2>-->
   <div class="row">
     <div class="col-3 mb-3">
       <%= image_tag @user.get_profile_image(70,70), class: "rounded-circle pl-0" %>
@@ -14,18 +11,27 @@
     <% @trip.each do |trip| %>
   <div class="col-6 mt-3 border-bottom">
     <% star=[(trip.star.nil?) ? 0 : trip.star , (trip.star2.nil?) ? 0 : trip.star2 , (trip.star3.nil?) ? 0 : trip.star3] %>
-    <%= link_to admin_trip_path(trip.id) do %>
+      <%= link_to admin_trip_path(trip.id) do %>
       <%= image_tag trip.image, size: "550x300" %>
     <% end %>
-      <h4 class="mt-2"><%= trip.title %></h4>
+    <h4 class="mt-2"><%= trip.title %></h4>
       <!--<p><%#= trip.body %></p>-->
-      <div class="row my-3">
+    <div class="row my-3">
       <div class="col-sm ml-0">
-        <div id="star<%= trip.id%>" class="d-inline-block"></div>
-        (<%= star.sum.fdiv(star.length).floor(1) %>)
+        <div id="star<%= trip.id%>" class="d-inline-block">
+        </div>
+          (<%= star.sum.fdiv(star.length).floor(1) %>)
       </div>
     </div>
-    <!--星平均-->
+    <!--コメント-->
+      <p>コメント数：<%= trip.trip_comments.count %></p>
+  </div>
+    <% end %>
+  </div>
+</div>
+
+
+<!--星平均-->
   <script>
   document.getElementById('star<%= trip.id%>').innerHTML="";
     raty(document.getElementById('star<%= trip.id%>'), {
@@ -38,10 +44,4 @@
       readOnly: true,
     });
   </script>
-    <!--コメント-->
-      <p>コメント数：<%= trip.trip_comments.count %></p>
-      </div>
-    <% end %>
-  </div>
-</div>
 

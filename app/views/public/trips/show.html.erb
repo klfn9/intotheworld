@@ -1,24 +1,24 @@
 <!--ユーザー側　投稿詳細画面-->
 <div class="container">
   <div class="row">
-      <div class="col pl-0 mb-3 mt-3">
-        <%= image_tag @trip.user.get_profile_image(50,50), class: "rounded-circle pl-0" %>
-        <strong class="ml-3"><%= @trip.user.name %></strong>
-      </div>
-    </div>
-  <div class="row">
-    <div class="col-sm-7 pl-0">
-    <%= image_tag @trip.image, size: "630x350" %>
+    <div class="col pl-0 mb-3 mt-3">
+      <%= image_tag @trip.user.get_profile_image(50,50), class: "rounded-circle pl-0" %>
+      <strong class="ml-3"><%= @trip.user.name %></strong>
     </div>
   </div>
-    <div class="row mt-3">
-      <h3><%= @trip.title %></h3>
+  <div class="row">
+    <div class="col-sm-7 pl-0">
+      <%= image_tag @trip.image, size: "630x350" %>
     </div>
-    <div class="row mt-3">
-      <div class="col-sm-7 pl-0">
-        <h6><%= @trip.body %></h6>
-      </div>
+  </div>
+  <div class="row mt-3">
+    <h3><%= @trip.title %></h3>
+  </div>
+  <div class="row mt-3">
+    <div class="col-sm-7 pl-0">
+      <h6><%= @trip.body %></h6>
     </div>
+  </div>
     <!--星評価表示-->
     <div class="row my-4">
       おすすめ度：<div id="star<%= @trip.id%>"></div>
@@ -29,29 +29,25 @@
     <div class="row my-4">
       行きやすさ：<div id="star3<%= @trip.id%>"></div>
     </div>
-
     <div class="row">
       <%= @trip.created_at.strftime('%Y/%m/%d') %>
     </div>
-
     <div class="row mt-2">
       <% if current_user and @trip.user_id == current_user.id %>
         <%= link_to "編集", edit_trip_path(@trip.id) %> |
         <%= link_to "削除", trip_path(@trip.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
       <% end %>
     </div>
-
-
     <!--コメント機能-->
   <% if user_signed_in? %>
-  <div class="mb-5">
-    <div id="comments_area">
-      <%= render 'public/trip_comments/comment', trip: @trip %>
+    <div class="mb-5">
+      <div id="comments_area">
+        <%= render 'public/trip_comments/comment', trip: @trip %>
+      </div>
+      <div class="new-comment">
+        <%= render 'public/trip_comments/form', trip: @trip %>
+      </div>
     </div>
-    <div class="new-comment">
-       <%= render 'public/trip_comments/form', trip: @trip %>
-    </div>
-  </div>
   <% end %>
 </div>
 

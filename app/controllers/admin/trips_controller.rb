@@ -6,7 +6,7 @@ class Admin::TripsController < ApplicationController
 
   # すべてのデータを表示
   def index
-    @trip = Trip.all.page(params[:page]).per(10)
+    #@trip = Trip.all.page(params[:page]).per(10)
     #@trips = params[:tag_id].present? ? Tag.find(params[:tag_id]).trips : Trip.all
     if params[:latest]
       @trips = Trip.latest

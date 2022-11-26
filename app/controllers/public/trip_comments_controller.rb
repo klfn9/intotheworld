@@ -22,6 +22,7 @@ class Public::TripCommentsController < ApplicationController
     render :comment  #render先にjsファイルを指定
   end
 
+  #ストロングパラメータ
   private
 
   def trip_comment_params

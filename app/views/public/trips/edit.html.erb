@@ -5,12 +5,12 @@
       <h2>編集ページ</h2>
     </div>
   </div>
-  <div class="row">
     <!--編集フォーム-->
     <%= form_with model: @trip, url: trip_path(@trip.id), method: :patch do |f| %>
-  <div class="col-sm-7 mt-2 mb-3 px-0">
+  <div class="row">
+    <div class="col-sm-7 mt-2 mb-3 px-0">
       <%= image_tag @trip.image, size: "630x350" %>
-  </div>
+    </div>
   </div>
     <div class="row">
       <div class="col mt-3">
@@ -18,8 +18,16 @@
           <%= f.text_field :title, size: 40 %>
       </div>
     </div>
-    <!-- 評価 -->
-  
+    <!--星評価表示-->
+    <div class="row my-4">
+      おすすめ度：<div id="star<%= @trip.id%>"></div>
+    </div>
+    <div class="row my-4">
+      綺麗さ：<div id="star2<%= @trip.id%>"></div>
+    </div>
+    <div class="row my-4">
+      行きやすさ：<div id="star3<%= @trip.id%>"></div>
+    </div>
       <div class="row">
         <div class="col my-4">
           <h5>本文</h5>
@@ -30,5 +38,39 @@
     <% end %>
   </div>
 </div>
+
+<script>
+    document.getElementById('star<%= @trip.id%>').innerHTML="";
+      raty(document.getElementById('star<%= @trip.id %>'), {
+        starOff:  '<%= asset_path('star-off.png') %>',
+        starOn : '<%= asset_path('star-on.png') %>',
+        starHalf: '<%= asset_path('star-half.png') %>',
+        half: true,
+        score: <%= @trip.star %>,
+        scoreName: 'trip[star]',
+      });
+
+    document.getElementById('star2<%= @trip.id%>').innerHTML="";
+       raty(document.getElementById('star2<%= @trip.id %>'), {
+      size     : 36,
+      starOff:  '<%= asset_path('star-off.png') %>',
+      starOn : '<%= asset_path('star-on.png') %>',
+      starHalf: '<%= asset_path('star-half.png') %>',
+      half: true,
+      scoreName: 'trip[star2]',
+      score: <%= @trip.star2 %>,
+    });
+
+  document.getElementById('star3<%= @trip.id%>').innerHTML="";
+    raty(document.getElementById('star3<%= @trip.id %>'), {
+      size     : 36,
+      starOff:  '<%= asset_path('star-off.png') %>',
+      starOn : '<%= asset_path('star-on.png') %>',
+      starHalf: '<%= asset_path('star-half.png') %>',
+      half: true,
+      scoreName: 'trip[star3]',
+      score: <%= @trip.star3 %>,
+    });
+    </script>
 
 

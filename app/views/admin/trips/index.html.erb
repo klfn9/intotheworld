@@ -32,7 +32,15 @@
             (<%= star.sum.fdiv(star.length).floor(1) %>)
           </div>
         </div>
-    <!--星平均-->
+        <!--コメント-->
+        <p>コメント数：<%= trip.trip_comments.count %></p>
+      </div>
+    <% end %>
+  </div>
+  <%#= paginate @trip %>
+</div>
+
+<!--星平均-->
   <script>
   document.getElementById('star<%= trip.id%>').innerHTML="";
     raty(document.getElementById('star<%= trip.id%>'), {
@@ -45,10 +53,3 @@
       readOnly: true,
     });
   </script>
-  <!--コメント-->
-      <p>コメント数：<%= trip.trip_comments.count %></p>
-    </div>
-    <% end %>
-  </div>
-  <%#= paginate @trip %>
-</div>

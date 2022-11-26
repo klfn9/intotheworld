@@ -9,28 +9,27 @@
   <div class="row mt-4">
     <%= image_tag @trip.image, size: "630x350" %>
   </div>
-    <div class="row mt-3">
-      <h3><%= @trip.title %></h3>
+  <div class="row mt-3">
+    <h3><%= @trip.title %></h3>
+  </div>
+  <div class="row mt-3">
+    <div class="col-10 ml-1">
+      <h6><%= @trip.body %></h6>
     </div>
-    <div class="row mt-3">
-      <div class="col-10 ml-1">
-        <h6><%= @trip.body %></h6>
-      </div>
-    </div>
+  </div>
     <!--星評価表示-->
-    <div class="row my-4">
-      おすすめ度：<div id="star<%= @trip.id%>"></div>
-    </div>
-    <div class="row my-4">
-      綺麗さ：<div id="star2<%= @trip.id%>"></div>
-    </div>
-    <div class="row my-4">
-      行きやすさ：<div id="star3<%= @trip.id%>"></div>
-    </div>
-
-    <div class="row mt-2 mb-5">
-      <%= link_to "削除", admin_trip_path(@trip.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
-    </div>
+  <div class="row my-4">
+    おすすめ度：<div id="star<%= @trip.id%>"></div>
+  </div>
+  <div class="row my-4">
+    綺麗さ：<div id="star2<%= @trip.id%>"></div>
+  </div>
+  <div class="row my-4">
+    行きやすさ：<div id="star3<%= @trip.id%>"></div>
+  </div>
+  <div class="row mt-2 mb-5">
+    <%= link_to "削除", admin_trip_path(@trip.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+  </div>
 </div>
 
 

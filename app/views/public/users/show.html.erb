@@ -10,7 +10,6 @@
       <%= image_tag @user.get_profile_image(110,110), class: "rounded-circle pl-0" %>
       <strong class="ml-3"><%= @user.name %></strong>
     </div>
-
     <div class="col-sm-2 mt-3 px-0">
       <% if @user == current_user && @user.email != "guest@example.com" %>
       <%= link_to "プロフィール編集", edit_user_path(@user.id), class: "btn btn-outline-secondary" %>
@@ -18,26 +17,31 @@
     <div class="col-sm-2 mt-3 pl-0">
       <%= link_to "退会する", unsubscribe_path, method: :get, class: "btn btn-outline-danger" %>
     </div>
-    <% end %>
-    </div>
-
+      <% end %>
+  </div>
   <!--ユーザーの投稿一覧-->
   <div class="row">
     <% @trip.each do |trip| %>
-  <div class="col-sm-6 pl-0 mt-4 border-bottom">
-    <% star=[(trip.star.nil?) ? 0 : trip.star , (trip.star2.nil?) ? 0 : trip.star2 , (trip.star3.nil?) ? 0 : trip.star3] %>
-    <%= link_to trip_path(trip.id) do %>
-      <%= image_tag trip.image, size: "550x300" %>
+      <div class="col-sm-6 pl-0 mt-4 border-bottom">
+        <% star=[(trip.star.nil?) ? 0 : trip.star , (trip.star2.nil?) ? 0 : trip.star2 , (trip.star3.nil?) ? 0 : trip.star3] %>
+        <%= link_to trip_path(trip.id) do %>
+        <%= image_tag trip.image, size: "550x300" %>
     <% end %>
       <h4><%= trip.title %></h4>
       <!--<p><%#= trip.body %></p>-->
-      <div class="row my-4">
-      <div class="col-sm ml-0">
-        <div id="star<%= trip.id%>" class="d-inline-block"></div>
-        (<%= star.sum.fdiv(star.length).floor(1) %>)
+        <div class="row my-4">
+          <div class="col-sm ml-0">
+            <div id="star<%= trip.id%>" class="d-inline-block">
+            </div>
+              (<%= star.sum.fdiv(star.length).floor(1) %>)
+          </div>
+        </div>
       </div>
-    </div>
-    <!--星平均-->
+    <% end %>
+  </div>
+</div>
+
+<!--星平均-->
   <script>
   document.getElementById('star<%= trip.id%>').innerHTML="";
     raty(document.getElementById('star<%= trip.id%>'), {
@@ -50,8 +54,3 @@
       readOnly: true,
     });
   </script>
-      </div>
-    <% end %>
-  </div>
-</div>
-
