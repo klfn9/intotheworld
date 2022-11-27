@@ -10,8 +10,8 @@
       <%= image_tag @user.get_profile_image(110,110), class: "rounded-circle pl-0" %>
       <strong class="ml-3"><%= @user.name %></strong>
     </div>
+    <% if @user == current_user && @user.email != "guest@example.com" %>
     <div class="col-sm-2 mt-3 px-0">
-      <% if @user == current_user && @user.email != "guest@example.com" %>
       <%= link_to "プロフィール編集", edit_user_path(@user.id), class: "btn btn-outline-secondary" %>
     </div>
     <div class="col-sm-2 mt-3 pl-0">
