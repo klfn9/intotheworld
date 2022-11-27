@@ -34,8 +34,8 @@
     </div>
     <div class="row mt-2">
       <% if current_user and @trip.user_id == current_user.id %>
-        <%= link_to "編集", edit_trip_path(@trip.id) %> |
-        <%= link_to "削除", trip_path(@trip.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+        <%= link_to "編集", edit_trip_path(@trip.id), class: "btn btn-outline-success mr-2" %>
+        <%= link_to "削除", trip_path(@trip.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-outline-danger" %>
       <% end %>
     </div>
     <!--コメント機能-->

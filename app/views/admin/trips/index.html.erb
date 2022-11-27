@@ -19,7 +19,6 @@
               <strong class="ml-3"><%= trip.user.name %></strong>
           </div>
         </div>
-        <% star=[(trip.star.nil?) ? 0 : trip.star , (trip.star2.nil?) ? 0 : trip.star2 , (trip.star3.nil?) ? 0 : trip.star3] %>
           <%= link_to admin_trip_path(trip.id) do %>
           <%= image_tag trip.image, size: "550x300" %>
         <% end %>
@@ -29,7 +28,7 @@
           <div class="col-sm ml-0">
             <div id="star<%= trip.id%>" class="d-inline-block">
             </div>
-            (<%= star.sum.fdiv(star.length).floor(1) %>)
+            (<%= trip.star_average %>)
           </div>
         </div>
         <!--コメント-->
@@ -42,6 +41,8 @@
 
 <!--星平均-->
   <script>
+  <% @trips.each do |trip| %>
+  <% star=[(trip.star.nil?) ? 0 : trip.star , (trip.star2.nil?) ? 0 : trip.star2 , (trip.star3.nil?) ? 0 : trip.star3] %>
   document.getElementById('star<%= trip.id%>').innerHTML="";
     raty(document.getElementById('star<%= trip.id%>'), {
       size     : 36,
@@ -52,4 +53,5 @@
       half: true,
       readOnly: true,
     });
+  <% end %>
   </script>

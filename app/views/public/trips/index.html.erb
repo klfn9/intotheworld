@@ -36,10 +36,9 @@
         <div class="row">
           <div class="col mb-3 mt-3">
             <%= image_tag trip.user.get_profile_image(50,50), class: "rounded-circle pl-0" %>
-              <strong class="ml-3"><%=  trip.user.name %></strong>
+              <strong class="ml-3"><%= trip.user.name %></strong>
           </div>
         </div>
-      <% star=[(trip.star.nil?) ? 0 : trip.star , (trip.star2.nil?) ? 0 : trip.star2 , (trip.star3.nil?) ? 0 : trip.star3] %>
         <%= link_to trip_path(trip.id) do %>
       <%= image_tag trip.image, size: "550x300" %>
     <% end %>
@@ -47,14 +46,15 @@
       <!--<p><%#= trip.body %></p>-->
       <div class="row my-3">
         <div class="col-sm ml-0">
-          <div id="star<%= trip.id%>" class="d-inline-block">
+          <div id="star<%= trip.id %>" class="d-inline-block">
           </div>
+          <%#= trip.inspect %>
           <%= trip.star_average %>
         </div>
       </div>
       <!--コメント-->
       <p>コメント数：<%= trip.trip_comments.count %></p>
-        <div class="row ml-0 m-2">
+        <div class="row ml-0">
           <%= trip.created_at.strftime('%Y/%m/%d') %>
         </div>
       </div>
@@ -65,16 +65,20 @@
 
 <!--星平均-->
   <script>
+  <% @trips.each do |trip| %>
+  <% star=[(trip.star.nil?) ? 0 : trip.star , (trip.star2.nil?) ? 0 : trip.star2 , (trip.star3.nil?) ? 0 : trip.star3] %>
   document.getElementById('star<%= trip.id%>').innerHTML="";
     raty(document.getElementById('star<%= trip.id%>'), {
       size     : 36,
       starOff:  '<%= asset_path('star-off.png') %>',
       starOn : '<%= asset_path('star-on.png') %>',
       starHalf: '<%= asset_path('star-half.png') %>',
-      score: '<%= star.sum.fdiv(star.length) %>',
+      //score: '<%#= star.sum.fdiv(star.length) %>',
+      score: '<%= trip.star_average %>',
       half: true,
       readOnly: true,
     });
+  <% end %>
   </script>
 
 

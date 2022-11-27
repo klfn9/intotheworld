@@ -53,7 +53,12 @@ class Public::TripsController < ApplicationController
   # 更新機能
   def update
     trip = Trip.find(params[:id])
+    #trip.star_average = (trip.star.to_f + trip.star2.to_f + trip.star3.to_f).fdiv(3).floor(1)
+    trip.star_average = (trip_params[:star].to_f + trip_params[:star2].to_f + trip_params[:star3].to_f).fdiv(3).floor(1)
+    #byebug
     trip.update(trip_params)
+
+
     #詳細ページへ遷移
     redirect_to trip_path(trip.id)
   end
