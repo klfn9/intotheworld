@@ -20,7 +20,3 @@ Tag.create([
     { name: 'その他'},
     ])
     
-Admin.create!(
-   email: 'admin@admin',
-   password: 'testtest'
-)
