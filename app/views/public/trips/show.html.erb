@@ -39,11 +39,11 @@
       <% end %>
     </div>
     <!--コメント機能-->
-  <% if user_signed_in? %>
     <div class="mb-5">
       <div id="comments_area">
         <%= render 'public/trip_comments/comment', trip: @trip %>
       </div>
+      <% if user_signed_in? %>
       <div class="new-comment">
         <%= render 'public/trip_comments/form', trip: @trip %>
       </div>
